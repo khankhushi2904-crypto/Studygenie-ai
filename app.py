@@ -13,10 +13,50 @@ st.set_page_config(
     page_title="StudyGenie AI",
     page_icon="📚"
 )
+with st.sidebar:
+    st.title("📚 StudyGenie AI")
+    st.markdown("---")
+    st.write("### Features")
+    st.write("📝 PDF Summary")
+    st.write("❓ Important Questions")
+    st.write("🎴 Flashcards")
+    st.write("✅ MCQs")
+    st.write("🤖 Ask AI")
+    st.markdown("---")
+    st.caption("Powered by Gemini 2.5 Flash")
+st.markdown("""
+<div style='text-align:center;
+padding:25px;
+border-radius:15px;
+background:linear-gradient(135deg,#1e3c72,#2a5298);
+color:white;
+margin-bottom:20px;'>
 
-st.title("📚 StudyGenie AI")
-st.subheader("Your Personal AI Tutor")
+<h1>📚 StudyGenie AI</h1>
+<h3>Your Personal AI Study Assistant</h3>
 
+<p>
+Upload PDFs, Generate Summaries, Flashcards,
+MCQs and Ask Questions instantly.
+</p>
+
+</div>
+""", unsafe_allow_html=True)
+col1, col2, col3, col4 = st.columns(4)
+
+with col1:
+    st.success("📝 Summary")
+
+with col2:
+    st.info("❓ Questions")
+
+with col3:
+    st.warning("🎴 Flashcards")
+
+with col4:
+    st.success("✅ MCQs")
+
+st.markdown("## 📄 Upload Your Study Material")
 uploaded_file = st.file_uploader(
     "Upload PDF",
     type=["pdf"]
@@ -130,3 +170,6 @@ if st.button("Ask AI"):
             response = model.generate_content(question)
 
         st.write(response.text)
+        st.markdown("---")
+st.markdown("---")
+st.caption("StudyGenie AI | Powered by Gemini Ai")
